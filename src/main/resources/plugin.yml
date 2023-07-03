@@ -1,0 +1,4 @@
+name: LivePlugin
+version: '${project.version}'
+main: com.bumpyjake.liveplugin.LivePlugin
+api-version: 1.20
