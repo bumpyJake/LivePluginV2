@@ -1,6 +1,7 @@
 package com.bumpyjake.liveplugin.commands;
 
 import com.bumpyjake.liveplugin.LivePlugin;
+import com.bumpyjake.liveplugin.Manager;
 import com.bumpyjake.liveplugin.data.rank.RankManager;
 import com.marcusslover.plus.lib.command.Command;
 import com.marcusslover.plus.lib.command.CommandContext;
@@ -18,7 +19,7 @@ public class ReloadConfigCommand implements ICommand {
         if (sender.hasPermission("live.admin")) {
             LivePlugin.getInstance().reloadConfig();
             RankManager.getInstance().reset();
-            Text.of("&aReloaded configuration").send(sender);
+            Text.of(Manager.prefix + "&aReloaded configuration").send(sender);
             LivePlugin.getInstance().getLogger().info("Reloaded live configuration");
         }
 

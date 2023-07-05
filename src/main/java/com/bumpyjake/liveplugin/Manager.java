@@ -23,10 +23,12 @@ public class Manager {
         return instance;
     }
 
+    public static String prefix = LivePlugin.getInstance().getConfig().getString("prefix");
+
     public void giveRank(Player p, Rank rank) {
         LPHook.addToGroup(p, rank.getLuckPermsGroup());
 
-        Text.of(rank.getOnMessage()).send(p);
+        Text.of(prefix + rank.getOnMessage()).send(p);
         Title.of(rank.getOnTitle(), rank.getOnSubtitle()).send(p, 0, 50, 10);
         Note.of(Sound.ENTITY_EXPERIENCE_ORB_PICKUP).send(p);
 
@@ -49,7 +51,7 @@ public class Manager {
     public void removeRank(Player p, Rank rank) {
         LPHook.removeFromGroup(p, rank.getLuckPermsGroup());
 
-        Text.of(rank.getOffMessage()).send(p);
+        Text.of(prefix + rank.getOffMessage()).send(p);
 
         LivePlugin.getInstance().getLogger().info(p.getName() + " is no longer " + rank.getName());
 
@@ -80,7 +82,7 @@ public class Manager {
 
     private void broadcast(@NotNull String message) {
         Text text = Text.of(message);
-        text = Text.of(text.raw());
+        text = Text.of(prefix + text.raw());
         text.send(Bukkit.getConsoleSender());
         for (Player p : Bukkit.getOnlinePlayers()) {
             text.send((CommandSender) p);

@@ -2,6 +2,8 @@
 live-group: live
 rec-group: rec
 
+prefix: '&8[&#f52428LIVE&8] &r'
+
 live-on-message: '&fYou are now &cLIVE! &7&oUse /live to go offline!'
 live-off-message: '&fYou are no longer live!'
 live-on-message-all: '&a%player% &fis now &cLIVE!'
