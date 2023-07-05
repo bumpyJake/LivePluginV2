@@ -19,7 +19,8 @@ public class ReloadConfigCommand implements ICommand {
         if (sender.hasPermission("live.admin")) {
             LivePlugin.getInstance().reloadConfig();
             RankManager.getInstance().reset();
-            Text.of(Manager.prefix + "&aReloaded configuration").send(sender);
+            String prefix = LivePlugin.getInstance().getConfig().getString("prefix");
+            Text.of(prefix + "&aReloaded configuration").send(sender);
             LivePlugin.getInstance().getLogger().info("Reloaded live configuration");
         }
 
