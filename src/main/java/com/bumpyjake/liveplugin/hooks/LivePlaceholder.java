@@ -1,5 +1,6 @@
 package com.bumpyjake.liveplugin.hooks;
 
+import com.bumpyjake.liveplugin.Manager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +25,10 @@ public class LivePlaceholder extends PlaceholderExpansion {
     public @Nullable String onPlaceholderRequest(final Player player, @NotNull final String args) {
         switch (args) {
             case "islive" -> {
-
+                return String.valueOf((Manager.getInstance().isLive(player)));
+            }
+            case "isRec" -> {
+                return String.valueOf((Manager.getInstance().isRec(player)));
             }
         };
         return null;
