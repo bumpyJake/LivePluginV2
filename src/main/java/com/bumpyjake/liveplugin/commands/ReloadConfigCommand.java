@@ -1,7 +1,6 @@
 package com.bumpyjake.liveplugin.commands;
 
 import com.bumpyjake.liveplugin.LivePlugin;
-import com.bumpyjake.liveplugin.Manager;
 import com.bumpyjake.liveplugin.data.rank.RankManager;
 import com.marcusslover.plus.lib.command.Command;
 import com.marcusslover.plus.lib.command.CommandContext;

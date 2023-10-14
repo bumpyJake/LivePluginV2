@@ -24,7 +24,9 @@ public class Manager {
     }
 
     public void giveRank(Player p, Rank rank) {
-        LPHook.addToGroup(p, rank.getLuckPermsGroup());
+        if (LivePlugin.getInstance().getConfig().getBoolean("use-lp")) {
+            LPHook.addToGroup(p, rank.getLuckPermsGroup());
+        }
 
         String prefix = LivePlugin.getInstance().getConfig().getString("prefix");
 
@@ -49,7 +51,9 @@ public class Manager {
     }
 
     public void removeRank(Player p, Rank rank) {
-        LPHook.removeFromGroup(p, rank.getLuckPermsGroup());
+        if (LivePlugin.getInstance().getConfig().getBoolean("use-lp")) {
+            LPHook.removeFromGroup(p, rank.getLuckPermsGroup());
+        }
 
         String prefix = LivePlugin.getInstance().getConfig().getString("prefix");
 

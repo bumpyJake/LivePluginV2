@@ -46,9 +46,12 @@ public final class LivePlugin extends JavaPlugin {
         containerManager.register("players", new PlayerDataContainer());
         containerManager.init(this);
 
-        RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
-        if (provider != null) {
-            luckPerms = provider.getProvider();
+
+        if (Bukkit.getPluginManager().getPlugin("LuckPerms") != null) {
+            RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+            if (provider != null) {
+                luckPerms = provider.getProvider();
+            }
         }
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {

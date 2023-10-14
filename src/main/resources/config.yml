@@ -1,4 +1,5 @@
 # Put the name of your "live" group here (NOT the displayname)
+use-lp: false
 live-group: live
 rec-group: rec
 
