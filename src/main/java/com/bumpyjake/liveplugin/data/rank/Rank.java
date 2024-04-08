@@ -13,4 +13,5 @@ public class Rank {
     private final String onMessageAll;
     private final String onTitle;
     private final String onSubtitle;
+    private final String icon;
 }

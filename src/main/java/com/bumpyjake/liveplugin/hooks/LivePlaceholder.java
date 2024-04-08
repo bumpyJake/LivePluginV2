@@ -1,6 +1,8 @@
 package com.bumpyjake.liveplugin.hooks;
 
 import com.bumpyjake.liveplugin.Manager;
+import com.bumpyjake.liveplugin.data.rank.Rank;
+import com.bumpyjake.liveplugin.data.rank.RankManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -24,11 +26,18 @@ public class LivePlaceholder extends PlaceholderExpansion {
 
     public @Nullable String onPlaceholderRequest(final Player player, @NotNull final String args) {
         switch (args) {
-            case "islive" -> {
+            case "live" -> {
                 return String.valueOf((Manager.getInstance().isLive(player)));
             }
-            case "isRec" -> {
+            case "rec" -> {
                 return String.valueOf((Manager.getInstance().isRec(player)));
+            }
+            case "icon" -> {
+                Rank rank = Manager.getInstance().getRank(player);
+                if (rank != null) {
+                    return rank.getIcon();
+                }
+                return "";
             }
         };
         return null;

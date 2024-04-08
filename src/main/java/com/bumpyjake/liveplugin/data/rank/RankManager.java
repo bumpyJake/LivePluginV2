@@ -27,11 +27,11 @@ public class RankManager {
 
         Rank liveRank = new Rank("live", config.getString("live-group"),
                 config.getString("live-on-message"), config.getString("live-off-message"), config.getString("live-on-message-all"),
-                config.getString("live-on-title"), config.getString("live-on-subtitle"));
+                config.getString("live-on-title"), config.getString("live-on-subtitle"), config.getString("live-icon"));
 
         Rank recRank = new Rank("rec", config.getString("rec-group"),
                 config.getString("rec-on-message"), config.getString("rec-off-message"), config.getString("rec-on-message-all"),
-                config.getString("rec-on-title"), config.getString("rec-on-subtitle"));
+                config.getString("rec-on-title"), config.getString("rec-on-subtitle"), config.getString("rec-icon"));
 
         ranks.put("live", liveRank);
         ranks.put("rec", recRank);

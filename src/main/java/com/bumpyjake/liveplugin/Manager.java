@@ -4,10 +4,12 @@ import com.bumpyjake.liveplugin.data.playerdata.PlayerData;
 import com.bumpyjake.liveplugin.data.playerdata.PlayerDataContainer;
 import com.bumpyjake.liveplugin.data.playerdata.PlayerDataHandler;
 import com.bumpyjake.liveplugin.data.rank.Rank;
+import com.bumpyjake.liveplugin.data.rank.RankManager;
 import com.bumpyjake.liveplugin.hooks.LPHook;
 import com.marcusslover.plus.lib.sound.Note;
 import com.marcusslover.plus.lib.text.Text;
 import com.marcusslover.plus.lib.title.Title;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
@@ -15,13 +17,10 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class Manager {
+    @Getter
     private static final Manager instance = new Manager();
 
     private Manager() {}
-
-    public static Manager getInstance() {
-        return instance;
-    }
 
     public void giveRank(Player p, Rank rank) {
         if (LivePlugin.getInstance().getConfig().getBoolean("use-lp")) {
@@ -70,6 +69,19 @@ public class Manager {
             playerData.setRec(false);
             playerContainer.writeData(p.getUniqueId(), playerData);
         }
+    }
+
+    public Rank getRank(Player p) {
+        PlayerDataContainer playerContainer = PlayerDataHandler.getInstance().getContainer();
+        PlayerData playerData = playerContainer.loadData(p.getUniqueId());
+
+        if (playerData.isLive()) {
+            return RankManager.getInstance().getRank("live");
+        } else if (playerData.isRec()) {
+            return RankManager.getInstance().getRank("rec");
+        }
+
+        return null;
     }
 
     public boolean isLive(Player p) {
